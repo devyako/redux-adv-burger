@@ -206,7 +206,7 @@ class ContactData extends Component {
     );
   }
 }
-
+  
 const mapStateToProps = (state) => {
   return {
     ings: state.ingredients,
