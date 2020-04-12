@@ -37,6 +37,7 @@ class Auth extends Component {
         touched: false,
       },
     },
+    isSignedUp: true,
   };
 
   checkValidity(value, rules) {
@@ -120,6 +121,7 @@ class Auth extends Component {
           {form}
           <Button btnType="Success">Submit</Button>
         </form>
+        <Button btnType="Danger">Switch To SignIn</Button>
       </div>
     );
   }
