@@ -10,12 +10,9 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 import * as burgerBuilderActions from "../../store/actions/index";
 import axios from "../../axios-orders";
+import * as actions from "../../store/actions/index";
 
 class BurgerBuilder extends Component {
-  // constructor(props) {
-  //     super(props);
-  //     this.state = {...}
-  // }
   state = {
     purchasing: false,
   };
@@ -40,10 +37,11 @@ class BurgerBuilder extends Component {
     if (this.props.isAuthenticated) {
       this.setState({ purchasing: true });
     } else {
+      this.props.onSetRedirectPath("/checkout");
       this.props.history.push("/auth");
     }
   };
-  
+
   purchaseCancelHandler = () => {
     this.setState({ purchasing: false });
   };
@@ -123,6 +121,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(burgerBuilderActions.removeIngredient(ingName)),
     onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients()),
     onInitPurchase: () => dispatch(burgerBuilderActions.purchaseInit()),
+    onSetRedirectPath: () => dispatch(actions.setAuthRedirectPath("/checkout")),
   };
 };
 
