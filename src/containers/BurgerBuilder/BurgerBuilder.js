@@ -43,7 +43,7 @@ class BurgerBuilder extends Component {
       this.props.history.push("/auth");
     }
   };
-
+  
   purchaseCancelHandler = () => {
     this.setState({ purchasing: false });
   };
